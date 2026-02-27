@@ -26,9 +26,9 @@ public class Contacto {
     @Column(name = "email")
     private String email;
     @Column(name = "telefono")
-    private int telefono;
+    private Long telefono;
     @Column(name = "celular")
-    private int celular;
+    private Long celular;
     @Column(name = "casa")
     private boolean casa;
     @Column(name = "oficina")
@@ -36,8 +36,9 @@ public class Contacto {
     @Column(name = "otro")
     private boolean otro;
 
-    @ManyToOne
-    @JoinColumn(name="id_persona")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id_persona", nullable = false)
+    @com.fasterxml.jackson.annotation.JsonBackReference
     Persona persona;
 
 }

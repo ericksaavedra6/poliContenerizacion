@@ -35,5 +35,6 @@ public class Persona {
     private boolean activo;
 
     @OneToMany(mappedBy = "persona")
+    @com.fasterxml.jackson.annotation.JsonManagedReference
     List<Contacto> contactos;
 }
