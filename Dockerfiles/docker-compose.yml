@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8.4.8
+    environment:
+      MYSQL_DATABASE: entregaContenerizada
+      MYSQL_USER: erick
+      MYSQL_PASSWORD: admin1234
+      MYSQL_ROOT_PASSWORD: admin1234
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  contenerizacion-service:
+    depends_on:
+      db:
+        condition: service_healthy
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: contenerizacion:1.0.0
+    ports:
+      - "8080:8080"
+    restart: always
