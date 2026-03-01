@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 import java.util.List;
 
-@Table(name = "Persona")
+@Table(name = "persona")
 @Entity
 @Data
 @AllArgsConstructor
@@ -34,7 +34,7 @@ public class Persona {
     @Column(name = "activo")
     private boolean activo;
 
-    @OneToMany(mappedBy = "persona")
+    @OneToMany(mappedBy = "personaI")
     @com.fasterxml.jackson.annotation.JsonManagedReference
     List<Contacto> contactos;
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Table(name = "Contacto")
+@Table(name = "contacto")
 @Entity
 @Data
 @AllArgsConstructor
@@ -39,6 +39,6 @@ public class Contacto {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_persona", nullable = false)
     @com.fasterxml.jackson.annotation.JsonBackReference
-    Persona persona;
+    Persona personaI;
 
 }
